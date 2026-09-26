@@ -1,1 +1,14 @@
+Inorder Traversal:
+A102 A120 A25 A45 A7 B100 B12 B3
 
+Search Key: A120
+BST Search Comparisons: 3
+Linear Search Comparisons: 6
+
+Search Key: A7
+BST Search Comparisons: 3
+Linear Search Comparisons: 3
+
+Search Key: B3
+BST Search Comparisons: 6
+Linear Search Comparisons: 7
