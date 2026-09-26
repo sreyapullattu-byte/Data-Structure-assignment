@@ -1,0 +1,31 @@
+Complexity Analysis
+
+BST Search
+- Best-case time complexity: O(1)
+- Average-case time complexity: O(log n)
+- Worst-case time complexity: O(n)
+- Space complexity: O(n)
+
+Linear Search
+- Best-case time complexity: O(1)
+- Average-case time complexity: O(n)
+- Worst-case time complexity: O(n)
+- Space complexity: O(1)
+
+Effect of Key Length and Insertion Order
+
+The length of the identification keys affects the cost of comparing two keys
+because the keys are compared character by character. The insertion order
+affects the height of the BST. A balanced BST has a smaller height and
+provides faster searches, while an unbalanced or skewed BST can increase
+the search time to O(n).
+
+For the given data, the observed BST search comparisons depend on the
+position of each identification number in the tree. The theoretical best
+case is O(1), while the worst case is O(n).
+
+Suitable Approach
+
+For a growing database, a self-balancing BST such as an AVL Tree or
+Red-Black Tree can be used to maintain efficient search performance by
+keeping the tree height approximately balanced.
