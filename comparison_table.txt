@@ -1,0 +1,11 @@
+Comparison of BST Search and Linear Search
+
+Search Key    BST Search Comparisons    Linear Search Comparisons
+A120          3                         6
+A7            3                         3
+B3            6                         7
+
+Observation:
+BST Search requires fewer comparisons for A120 and B3 compared with
+Linear Search for the given input. For A7, both methods require 3
+comparisons.
