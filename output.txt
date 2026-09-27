@@ -1,14 +1,25 @@
-Inorder Traversal:
-A102 A120 A25 A45 A7 B100 B12 B3
+IDENTIFICATION NUMBERS
+----------------------
+A102 A25 A7 B100 B12 A120 B3 A45 
 
-Search Key: A120
-BST Search Comparisons: 3
-Linear Search Comparisons: 6
+INORDER TRAVERSAL
+-----------------
+A102 A120 A25 A45 A7 B100 B12 B3 
 
-Search Key: A7
-BST Search Comparisons: 3
-Linear Search Comparisons: 3
+BST HEIGHT = 6 levels
 
-Search Key: B3
-BST Search Comparisons: 6
-Linear Search Comparisons: 7
+
+SEARCH PERFORMANCE
+------------------
+Key	BST	Linear
+A102	1	1
+A120	3	6
+A7	3	3
+B12	5	5
+B3	6	7
+A45	4	8
+
+INSERTION ORDER ANALYSIS
+-----------------------
+Original insertion order height : 6 levels
+Sorted insertion order height   : 8 levels
