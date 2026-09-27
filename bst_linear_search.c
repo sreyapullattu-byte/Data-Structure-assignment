@@ -2,16 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX 20
+
 struct Node {
-    char key[20];
+    char key[MAX];
     struct Node *left;
     struct Node *right;
 };
 
 struct Node* createNode(char key[]) {
-    struct Node *newNode;
-
-    newNode = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
 
     strcpy(newNode->key, key);
     newNode->left = NULL;
@@ -21,13 +21,11 @@ struct Node* createNode(char key[]) {
 }
 
 struct Node* insert(struct Node *root, char key[]) {
-
     if (root == NULL)
         return createNode(key);
 
     if (strcmp(key, root->key) < 0)
         root->left = insert(root->left, key);
-
     else if (strcmp(key, root->key) > 0)
         root->right = insert(root->right, key);
 
@@ -35,7 +33,6 @@ struct Node* insert(struct Node *root, char key[]) {
 }
 
 void inorder(struct Node *root) {
-
     if (root != NULL) {
         inorder(root->left);
         printf("%s ", root->key);
@@ -43,83 +40,126 @@ void inorder(struct Node *root) {
     }
 }
 
-int bstSearch(struct Node *root, char key[]) {
-
-    int comparisons = 0;
-
+int bstSearch(struct Node *root, char key[], int *comparisons) {
     while (root != NULL) {
+        (*comparisons)++;
 
-        comparisons++;
+        if (strcmp(key, root->key) == 0)
+            return 1;
 
-        int result = strcmp(key, root->key);
-
-        if (result == 0)
-            return comparisons;
-
-        else if (result < 0)
+        if (strcmp(key, root->key) < 0)
             root = root->left;
-
         else
             root = root->right;
     }
 
-    return comparisons;
+    return 0;
 }
 
-int linearSearch(char data[][20], int n, char key[]) {
+int linearSearch(char data[][MAX], int n, char key[], int *comparisons) {
+    int i;
 
-    int comparisons = 0;
-
-    for (int i = 0; i < n; i++) {
-
-        comparisons++;
+    for (i = 0; i < n; i++) {
+        (*comparisons)++;
 
         if (strcmp(data[i], key) == 0)
-            return comparisons;
+            return 1;
     }
 
-    return comparisons;
+    return 0;
+}
+
+void freeTree(struct Node *root) {
+    if (root != NULL) {
+        freeTree(root->left);
+        freeTree(root->right);
+        free(root);
+    }
 }
 
 int main() {
-
-    char data[][20] = {
-        "A102", "A25", "A7", "B100",
-        "B12", "A120", "B3", "A45"
-    };
-
-    int n = 8;
-
+    FILE *file;
     struct Node *root = NULL;
 
-    for (int i = 0; i < n; i++) {
+    char data[20][MAX];
+    char searchKey[MAX];
+
+    int n, searches;
+    int i;
+    int bstComparisons, linearComparisons;
+
+    file = fopen("input.txt", "r");
+
+    if (file == NULL) {
+        printf("Error: input.txt file not found.\n");
+        return 1;
+    }
+
+    /* Read number of identification numbers */
+    fscanf(file, "%d", &n);
+
+    /* Read identification numbers */
+    for (i = 0; i < n; i++) {
+        fscanf(file, "%19s", data[i]);
         root = insert(root, data[i]);
     }
 
-    printf("Inorder Traversal:\n");
+    printf("QUESTION 11 - BST AND LINEAR SEARCH\n");
+    printf("------------------------------------\n");
+
+    printf("\nGiven Identification Numbers:\n");
+    for (i = 0; i < n; i++)
+        printf("%s ", data[i]);
+
+    printf("\n\nBST Inorder Traversal:\n");
     inorder(root);
 
-    char key1[] = "A120";
-    char key2[] = "A7";
-    char key3[] = "B3";
+    /* Read number of searches */
+    fscanf(file, "%d", &searches);
 
-    printf("\n\nSearch Key: %s\n", key1);
-    printf("BST Search Comparisons: %d\n",
-           bstSearch(root, key1));
-    printf("Linear Search Comparisons: %d\n",
-           linearSearch(data, n, key1));
+    printf("\n\nSearch Results:\n");
 
-    printf("\nSearch Key: %s\n", key2);
-    printf("BST Search Comparisons: %d\n",
-           bstSearch(root, key2));
-    printf("Linear Search Comparisons: %d\n",
-           linearSearch(data, n, key2));
+    for (i = 0; i < searches; i++) {
 
-    printf("\nSearch Key: %s\n", key3);
-    printf("BST Search Comparisons: %d\n",
-           bstSearch(root, key3));
-    printf("Linear Search Comparisons: %d\n",
-           linearSearch(data, n, key3));
+        fscanf(file, "%19s", searchKey);
+
+        bstComparisons = 0;
+        linearComparisons = 0;
+
+        int bstFound = bstSearch(root, searchKey, &bstComparisons);
+        int linearFound = linearSearch(data, n, searchKey,
+                                       &linearComparisons);
+
+        printf("\nSearch Key: %s\n", searchKey);
+
+        if (bstFound)
+            printf("BST Search: Found\n");
+        else
+            printf("BST Search: Not Found\n");
+
+        printf("BST Comparisons: %d\n", bstComparisons);
+
+        if (linearFound)
+            printf("Linear Search: Found\n");
+        else
+            printf("Linear Search: Not Found\n");
+
+        printf("Linear Search Comparisons: %d\n",
+               linearComparisons);
+    }
+
+    printf("\nComplexity Analysis:\n");
+    printf("BST Search - Best Case: O(1)\n");
+    printf("BST Search - Average Case: O(log n)\n");
+    printf("BST Search - Worst Case: O(n)\n");
+    printf("Linear Search - Best Case: O(1)\n");
+    printf("Linear Search - Average Case: O(n)\n");
+    printf("Linear Search - Worst Case: O(n)\n");
+    printf("BST Space Complexity: O(n)\n");
+    printf("Linear Search Space Complexity: O(1)\n");
+
+    fclose(file);
+    freeTree(root);
 
     return 0;
 }
