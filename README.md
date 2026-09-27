@@ -1,18 +1,16 @@
-# Data Structure Assignment
+# BST Government Identification Number Assignment
 
-## Question 11
+## Title
 
-This assignment implements a Binary Search Tree (BST) for organising identification numbers and compares BST Search with Linear Search.
+Implementation and Performance Analysis of Binary Search Tree for Government Identification Numbers
 
-## Input Data
+## 1. Aim
 
+To implement a Binary Search Tree (BST) using government identification numbers, perform inorder traversal, compare BST Search with Linear Search, and analyse the effect of insertion order and key length on search performance.
+
+## 2. Given Input
+
+The given identification numbers are:
+
+```text
 A102, A25, A7, B100, B12, A120, B3, A45
-
-## Contents
-
-- C source code
-- Final assignment PDF
-- BST implementation
-- Inorder traversal
-- BST and Linear Search comparison
-- Complexity analysis
