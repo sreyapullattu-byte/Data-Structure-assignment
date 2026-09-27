@@ -1,31 +1,129 @@
-Complexity Analysis
+COMPLEXITY ANALYSIS
 
-BST Search
-- Best-case time complexity: O(1)
-- Average-case time complexity: O(log n)
-- Worst-case time complexity: O(n)
-- Space complexity: O(n)
+1. BST SEARCH
 
-Linear Search
-- Best-case time complexity: O(1)
-- Average-case time complexity: O(n)
-- Worst-case time complexity: O(n)
-- Space complexity: O(1)
+Best Case:
+O(1)
 
-Effect of Key Length and Insertion Order
+Average Case:
+O(log n), when the tree is reasonably balanced.
 
-The length of the identification keys affects the cost of comparing two keys
-because the keys are compared character by character. The insertion order
-affects the height of the BST. A balanced BST has a smaller height and
-provides faster searches, while an unbalanced or skewed BST can increase
-the search time to O(n).
+Worst Case:
+O(n), when the BST becomes completely skewed.
 
-For the given data, the observed BST search comparisons depend on the
-position of each identification number in the tree. The theoretical best
-case is O(1), while the worst case is O(n).
 
-Suitable Approach
+2. LINEAR SEARCH
 
-For a growing database, a self-balancing BST such as an AVL Tree or
-Red-Black Tree can be used to maintain efficient search performance by
-keeping the tree height approximately balanced.
+Best Case:
+O(1)
+
+Average Case:
+O(n)
+
+Worst Case:
+O(n)
+
+
+3. BST INSERTION
+
+Best Case:
+O(1), when inserting into an empty tree.
+
+Average Case:
+O(log n), for a reasonably balanced tree.
+
+Worst Case:
+O(n), when the tree is skewed.
+
+
+4. SPACE COMPLEXITY
+
+BST:
+O(n)
+
+where n is the number of nodes.
+
+
+5. EFFECT OF KEY LENGTH
+
+The identification numbers are stored as strings.
+
+Examples:
+
+A7   = 2 characters
+A25  = 3 characters
+A102 = 4 characters
+B100 = 4 characters
+A120 = 4 characters
+
+String comparison may require examining several characters.
+
+If L is the average key length:
+
+BST Search:
+O(h × L)
+
+Linear Search:
+O(n × L)
+
+where:
+
+h = height of the BST
+n = number of keys
+L = average key length
+
+
+6. EFFECT OF INSERTION ORDER
+
+For the given insertion order:
+
+A102, A25, A7, B100, B12, A120, B3, A45
+
+the BST height is:
+
+4 levels
+
+For the sorted insertion order:
+
+A102, A120, A25, A45, A7, B100, B12, B3
+
+the BST height is:
+
+8 levels
+
+Therefore, insertion order has a significant effect on BST
+height and search performance.
+
+
+7. THEORETICAL COMPARISON
+
+BST Search:
+Best Case    = O(1)
+Average Case = O(log n)
+Worst Case   = O(n)
+
+Linear Search:
+Best Case    = O(1)
+Average Case = O(n)
+Worst Case   = O(n)
+
+
+8. SUITABLE APPROACH
+
+For a growing database, an ordinary BST may become skewed.
+
+A self-balancing BST such as an AVL Tree or Red-Black Tree
+can maintain approximately O(log n) search performance.
+
+For very large disk-based databases, B-Trees or B+ Trees can
+also be considered.
+
+
+9. CONCLUSION
+
+The BST provides efficient searching when the tree remains
+reasonably balanced. However, its performance can degrade to
+O(n) if the tree becomes skewed.
+
+Therefore, for a growing database, a self-balancing search
+tree is a suitable approach for maintaining efficient searches.
