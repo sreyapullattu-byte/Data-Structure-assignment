@@ -1,11 +1,47 @@
-Comparison of BST Search and Linear Search
+SEARCH PERFORMANCE COMPARISON
 
-Search Key    BST Search Comparisons    Linear Search Comparisons
-A120          3                         6
-A7            3                         3
-B3            6                         7
+Given identification numbers:
+A102, A25, A7, B100, B12, A120, B3, A45
 
-Observation:
-BST Search requires fewer comparisons for A120 and B3 compared with
-Linear Search for the given input. For A7, both methods require 3
+
+Search Key    BST Comparisons    Linear Search Comparisons
+----------------------------------------------------------
+A102          1                  1
+A120          3                  6
+A7            3                  3
+B12           3                  5
+B3            4                  7
+A45            4                  8
+
+
+TOTAL COMPARISONS
+
+BST Search:
+1 + 3 + 3 + 3 + 4 + 4 = 18
+
+Linear Search:
+1 + 6 + 3 + 5 + 7 + 8 = 30
+
+
+AVERAGE COMPARISONS
+
+BST Search:
+18 / 6 = 3 comparisons
+
+Linear Search:
+30 / 6 = 5 comparisons
+
+
+OBSERVATION
+
+For the six selected successful searches, BST Search required
+18 total comparisons, while Linear Search required 30 total
 comparisons.
+
+The average number of comparisons was:
+
+BST Search    = 3
+Linear Search = 5
+
+Therefore, for the selected search keys, BST Search required
+fewer comparisons than Linear Search.
