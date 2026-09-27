@@ -1,15 +1,26 @@
-Conclusion
+FINAL CONCLUSION
 
-The given identification numbers were successfully organised using a
-Binary Search Tree. The inorder traversal produced the identification
-numbers in lexicographic order.
+The Binary Search Tree was successfully implemented using the
+given government identification numbers.
 
-The comparison between BST Search and Linear Search shows that the
-number of comparisons depends on the position of the identification
-number and the structure of the BST. The insertion order affects the
-height of the tree and therefore affects search performance.
+The inorder traversal of the BST was:
 
-A balanced BST provides efficient searching, while an unbalanced BST can
-have O(n) worst-case search time. For a growing database, a self-balancing
-BST such as an AVL Tree or Red-Black Tree is a suitable approach for
-maintaining efficient searches.
+A120 A25 A45 A7 A102 B12 B3 B100
+
+BST Search and Linear Search were compared using selected
+identification numbers. The comparison results showed that
+BST Search required fewer comparisons on average for the
+selected search keys.
+
+The experiment also showed that insertion order affects the
+height of a Binary Search Tree. The given insertion order
+produced a tree of height 4 levels, while the sorted insertion
+order produced a skewed tree of height 8 levels.
+
+BST Search has O(log n) average complexity when the tree is
+reasonably balanced, but its worst-case complexity can become
+O(n) when the tree is skewed.
+
+Therefore, for a growing database, a self-balancing BST such
+as an AVL Tree or Red-Black Tree is suitable for maintaining
+efficient search performance.
